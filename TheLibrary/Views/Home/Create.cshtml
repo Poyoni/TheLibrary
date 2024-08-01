@@ -1,0 +1,34 @@
+﻿@model TheLibrary.Models.Library
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>הוספת ספרייה</h1>
+
+@* <h4>Library</h4> *@
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddLibrary" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="libraryGenre" class="control-label"></label>
+                <input asp-for="libraryGenre" class="form-control" />
+                <span asp-validation-for="libraryGenre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="הוסף ספרייה" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Library">חזרה לרשימת הספרייות</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

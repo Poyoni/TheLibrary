@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TheLibrary.Models.Shelf>
+
+@{
+    ViewData["Title"] = "Shelf";
+}
+
+<h1>Shelf</h1>
+
+<p>
+    <a asp-action="CreateShelf">הוסף מדף</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.height)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.width)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.height)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.width)
+            </td>
+            <td>
+                    @Html.ActionLink("ספרים במדף זה", "AllBooks", new { id=item.ID }) |
+                @Html.ActionLink("הוסף ספר", "CreateBook", new { id=item.ID}) |
+@*                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
