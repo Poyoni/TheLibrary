@@ -67,7 +67,7 @@ namespace TheLibrary.Controllers
 
             Data.Get.shelfs.Add(newShelf);
             Data.Get.SaveChanges();
-            return RedirectToAction("shelf");
+            return RedirectToAction("Library");
         }
 
         public IActionResult CreateShelf(int id)
@@ -84,7 +84,7 @@ namespace TheLibrary.Controllers
 
         public IActionResult CreateBook(int id)
         {
-            return View(new Shelf());
+            return View(new Book());
         }
 
         public IActionResult AddBook(Book book)
@@ -97,7 +97,7 @@ namespace TheLibrary.Controllers
 
             Data.Get.books.Add(newBook);
             Data.Get.SaveChanges();
-            return RedirectToAction("AllBooks");
+            return RedirectToAction("Library");
         }
     }
 }

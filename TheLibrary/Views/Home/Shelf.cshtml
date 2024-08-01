@@ -7,7 +7,7 @@
 <h1>Shelf</h1>
 
 <p>
-    <a asp-action="CreateShelf">הוסף מדף</a>
+@*     <a asp-action="CreateShelf">הוסף מדף</a> *@
 </p>
 <table class="table">
     <thead>
@@ -38,7 +38,7 @@
             </td>
             <td>
                     @Html.ActionLink("ספרים במדף זה", "AllBooks", new { id=item.ID }) |
-                @Html.ActionLink("הוסף ספר", "CreateBook", new { id=item.ID}) |
+                    @Html.ActionLink("הוסף ספר", "CreateBook", new { id = item.ID }) |
 @*                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ }) *@
             </td>
         </tr>
