@@ -95,9 +95,36 @@ namespace TheLibrary.Controllers
             newBook.width = book.width;
             newBook.Shelf = Data.Get.shelfs.FirstOrDefault(l => l.ID == book.ID);
 
+            if (newBook.height > newBook.Shelf.height)
+            {
+
+                TempData["ErrorMessage"] = "הספר לא נוסף למדף. גובה הספר לא תואם למידות המדף";
+
+                return RedirectToAction("Shelf");
+            }
+
+
+            Shelf? b = Data.Get.shelfs.Include(f => f.books).FirstOrDefault(g => g.ID == book.ID);
+            var totalWidth = b.books.Sum(b => b.width);
+            totalWidth += newBook.width;
+
+            if (totalWidth > newBook.Shelf.width)
+            {
+                TempData["ErrorMessage"] = "תפוסת המדף לא מאפשרת הוספת ספר זה. נא להוסיף במדף אחר";
+
+                return RedirectToAction("Shelf");
+            }
+
+
+            if (newBook.height +10 < newBook.Shelf.height)
+            {
+                TempData["WarningMessage"] = "הספר נוסף בהצלחה אך קיים הפרש גדול בין גובה הספר לגובה המדף. מקום לא מנוצל היטב.";
+                
             Data.Get.books.Add(newBook);
             Data.Get.SaveChanges();
-            return RedirectToAction("Library");
+            }
+
+            return RedirectToAction("Shelf");
         }
     }
 }

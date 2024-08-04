@@ -13,9 +13,7 @@
         <form asp-action="AddShelf" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="ID" class="control-label"></label>
-                <input asp-for="ID" class="form-control" />
-                <span asp-validation-for="ID" class="text-danger"></span>
+                <input asp-for="ID" hidden="hidden" />
             </div>
 
             <div class="form-group">
